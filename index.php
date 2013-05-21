@@ -20,6 +20,7 @@ try{
 	echo '<pre>';
 	print_r($o);
 	echo '</pre>';
+	exit;
 }
 // create application instance
 $facebook = new Facebook(array(
@@ -32,22 +33,13 @@ $facebook = new Facebook(array(
 $uid = null;
 $user = $facebook->getUser();
 
-// scope
-$scope = "read_stream,user_about_me,user_activities,user_birthday,user_checkins,user_education_history,user_events,user_groups,user_hometown, user_interests,user_likes,user_location,user_notes,user_online_presence,user_photo_video_tags,user_photos,user_relationships, user_relationship_details,user_religion_politics,user_status,user_videos,user_website,user_work_history,manage_notifications";
-// TODO:
-//,email,read_friendlists,read_insights,read_mailbox,read_requests,xmpp_login,ads_management";
-
-
-$loginUrl = "https://www.facebook.com/dialog/oauth?client_id=".$fbconfig['appid']
-			."&redirect_uri=".$fbconfig['canvas_page']."&scope=".$scope;
-
-// if user
+// if no user
 if (!$user) {
-	// forward the parent window to the authorization url so they can authenticate or login
+	// forward the parent window to the authorization url so user can authenticate or login
+	$loginUrl = $facebook->getLoginUrl();
 	echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
 	exit;
-}
-else {
+} else {
 	try {
 		// $user exists so proceed
 		$uid = $facebook->getUser();					// current logged-in user
@@ -292,6 +284,7 @@ function d($d){
 	echo '<pre>';
 	print_r($d);
 	echo '</pre>';
+	exit;
 }
 
 ?>
