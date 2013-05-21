@@ -5,8 +5,17 @@ README for Give Me My Data
 
 Give Me My Data is a Facebook application that helps users export their data out of Facebook for reuse in visualizations, archives, or any possible method of digital storytelling. Data can be exported in common formats like CSV, XML, and JSON as well as customized network graph formats.
 
-http://givememydata.com/
-https://apps.facebook.com/give_me_my_data/
+More information: http://givememydata.com/
+Live application: https://apps.facebook.com/give_me_my_data/
+
+
+Usage
+======================================================
+
+1. Visit https://developers.facebook.com/ and Register as a developer
+2. Create a new Facebook Application
+3. Remove the ".example" extension from /inc/fb_config.php.example
+4. Paste the App ID/API Key, App Secret, and App Namespace into /inc/fb_config.php
 
 
 Software included in this project
