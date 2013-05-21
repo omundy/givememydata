@@ -301,6 +301,8 @@ else {
 <?php
 
 	} catch (FacebookApiException $e) {
+		error_log($e);
+		$user = null;
 		echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
 		exit;
 	}
