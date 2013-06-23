@@ -5,7 +5,7 @@
 ....................................................................................................*/
 
 if (require_once('inc/functions/global.php')); 	// global functions
-$start_time = time_tracker(NULL); 				// keep track of time
+$start_time = time_tracker(NULL); 				// track response time
 
 
 /* LOGIN / AUTHENTICATE / CREATE FB OBJECT
@@ -33,6 +33,33 @@ $facebook = new Facebook(array(
 $uid = null;
 $user = $facebook->getUser();
 
+// scope: Regular permissions
+// reference: https://developers.facebook.com/docs/reference/fql/permissions/
+$scope = "user_about_me, user_activities, user_birthday, user_education_history, user_groups, user_hometown, user_interests, user_likes, user_location, user_questions, user_relationships, user_relationship_details, user_religion_politics, user_subscriptions, user_website, user_work_history, user_checkins, user_events, user_games_activity, user_notes, user_photos, user_status, user_videos, friends_about_me, friends_activities, friends_birthday, friends_education_history, friends_groups, friends_hometown, friends_interests, friends_likes, friends_location, friends_questions, friends_relationships, friends_relationship_details, friends_religion_politics, friends_subscriptions, friends_website, friends_work_history, friends_checkins, friends_events, friends_games_activity, friends_notes, friends_photos, friends_status, friends_videos";
+
+// scope: Extended Permissions:
+$scope .= ", user_online_presence, friends_online_presence, read_mailbox, read_stream, export_stream, read_friendlists, manage_notifications, read_insights";
+
+/** permissions we don't need
+
+	email - users' primary email address
+	xmpp_login - login users to chat
+	publish_actions - permission to post
+	publish_stream - publish on users' behalf
+	rsvp_event - rsvp for a user
+	manage_friendlists - create and manage users' friendslist
+	create_event - create/modify events for user
+	manage_pages - manage users' pages
+	ads_management - manage ads (assuming regular ppl don't have any)
+	offline_access - duh
+	video_upload
+	status_update - update user status
+
+*/
+
+$loginUrl = "https://www.facebook.com/dialog/oauth?client_id=".$fbconfig['appid']
+				."&redirect_uri=".$fbconfig['canvas_page']."&scope=".$scope;
+
 // if no user
 if (!$user) {
 	// forward the parent window to the authorization url so user can authenticate or login
@@ -44,7 +71,11 @@ if (!$user) {
 		// $user exists so proceed
 		$uid = $facebook->getUser();					// current logged-in user
 		$timezone = profile_timezone_function ($uid);	// get timezone
+		$permissions = $facebook->api('me/permissions');// the permissions granted, handy for checking later
 
+		
+		
+		
 	
 
 /* LOAD FUNCTIONS / GET DATA
