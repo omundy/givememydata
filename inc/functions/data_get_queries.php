@@ -312,7 +312,7 @@
 $fql['wall'] = "	
 
 		SELECT 
-			post_id, viewer_id, app_id, source_id, updated_time, created_time, filter_key, attribution, actor_id, target_id, message, app_data, action_links, attachment, impressions, comments, likes, privacy, permalink, xid, tagged_ids 
+			post_id, viewer_id, app_id, source_id, updated_time, created_time, filter_key, attribution, actor_id, target_id, message, app_data, action_links, attachment, impressions, comment_info, likes, privacy, permalink, xid, tagged_ids 
 		FROM stream 
 		WHERE source_id = me() 
 		AND created_time > 0
@@ -357,15 +357,17 @@ $fql['wall'] = "
 		
 		
 // comments
+// this doesn't work yet:
+// Exception: 604: Your statement is not indexable. The WHERE clause must contain an indexable column. Such columns are marked with * in the tables linked from http://developers.facebook.com/docs/reference/fql 
 	$fql['comments'] = "	
 			SELECT 
-				xid, object_id, post_id, fromid, time, text, id, username, reply_xid, post_fbid
-			FROM comments 
+				app_id, attachment, can_comment, can_like, can_remove, comment_count, fromid, id, is_private, likes, object_id, object_id_cursor, parent_id, parent_id_cursor, post_fbid, post_id, post_id_cursor, text, text_tags,  time, user_likes
+			FROM comment
 			WHERE fromid = $uid
 			ORDER BY time DESC 
 			LIMIT 10000";
 		
-		
+		/*
 	// this is the old one
 	$fql['comments'] = "	
 		
@@ -375,7 +377,7 @@ $fql['wall'] = "
 		WHERE source_id in 
 			(SELECT target_id FROM connection WHERE source_id=$uid) 		
 		AND is_hidden = 0";
-
+*/
 
 	
 	
