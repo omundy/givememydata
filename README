@@ -25,5 +25,40 @@ Facebook PHP SDK (v.3.2.2)
 https://github.com/facebook/facebook-php-sdk
 
 
+To do list for developers who want to contribute
+======================================================
 
++ Deal with pagination
+
+
+
+<b>Data</b>
+	<ul>
+		<li><del>Retrieve mutual friends</del>.</li>
+		<li><del>Get data from groups</del>.</li>
+		<li>Export "all."</li>
+		<li>Translate UNIX timestamp to human-readable <a href="http://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601 / W3 datetime</a> (defaults to user's timezone).</li>
+		<li><del>Figure out why calls for data in excess of specific amounts returns errors or truncated sections (e.g. >= 1,872 links, >= 573 messages, "a bazillion" status updates).</del></li>
+		<li>Get more than 1000 status updates. (5 requests)</li>
+		<li>Get comment threads / thread posts / comments. (3 requests)</li>
+		<li>Slow connections seem to be causing errors.</li>
+		<li><del>Migrate application to new API</del>.</li>
+		<li>Create link to download photos stored in Facebook.</li>
+		<li><del>Fix character entities for XML export.</del></li>
+		<li>Add filter parameters / or accommodate pagination somehow so users can go further back in time (past FB default).</li>
+	</ul>
+	
+	<b>Formats</b>
+	<ul>
+		<li>Create link to download data in common file formats (XLS, DOC).</li>
+		<li>Fix CSV files for multiples.</li>
+		<li><del>Fix XML node types.</del></li>
+		<li>Export in FOAF.</li>
+		<li>Finish MM format.</li>
+	</ul>
+	
+	<b>Usability</b>
+	<ul>
+		<li>Instructions for using data to make images.</li>
+	</ul>
 
