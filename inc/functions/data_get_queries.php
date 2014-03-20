@@ -65,7 +65,19 @@
 			WHERE app_id 
 			IN (SELECT developer_id, application_id FROM developer WHERE developer_id=$uid)";	
 	
-	
+
+
+// stream_filter ( = strange demographics?)
+	$fql['stream_filter'] = "	
+		
+		SELECT 
+			filter_key, icon_url, is_visible, name, rank, type, uid, value 
+		FROM stream_filter
+		WHERE uid = $uid";
+
+
+
+
 
 # PHOTOS / VIDEOS
 ##########################################################################################################
@@ -357,18 +369,8 @@ $fql['wall'] = "
 		
 		
 // comments
-// this doesn't work yet:
-// Exception: 604: Your statement is not indexable. The WHERE clause must contain an indexable column. Such columns are marked with * in the tables linked from http://developers.facebook.com/docs/reference/fql 
-	$fql['comments'] = "	
-			SELECT 
-				app_id, attachment, can_comment, can_like, can_remove, comment_count, fromid, id, is_private, likes, object_id, object_id_cursor, parent_id, parent_id_cursor, post_fbid, post_id, post_id_cursor, text, text_tags,  time, user_likes
-			FROM comment
-			WHERE fromid = $uid
-			ORDER BY time DESC 
-			LIMIT 10000";
-		
-		/*
-	// this is the old one
+
+	// this is the old one which appears to give a short list of global comments
 	$fql['comments'] = "	
 		
 		SELECT 
@@ -377,7 +379,33 @@ $fql['wall'] = "
 		WHERE source_id in 
 			(SELECT target_id FROM connection WHERE source_id=$uid) 		
 		AND is_hidden = 0";
-*/
+		
+	// new one! not working either
+	$fql['comments'] = "	
+		
+		SELECT post_id, actor_id, target_id, message 
+		FROM stream 
+		WHERE filter_key in 
+			(SELECT filter_key FROM stream_filter WHERE uid = $uid AND type = 'friendlist')";
+
+
+// 2013-09-02: was trying this new one but it doesn't work yet:
+// Exception: 604: Your statement is not indexable. The WHERE clause must contain an indexable column. Such columns are marked with * in the tables linked from http://developers.facebook.com/docs/reference/fql 
+/*	$fql['comments'] = "	
+			SELECT 
+				app_id, attachment, can_comment, can_like, can_remove, comment_count, fromid, id, is_private, likes, object_id, object_id_cursor, parent_id, parent_id_cursor, post_fbid, post_id, post_id_cursor, text, text_tags,  time, user_likes
+			FROM comment
+			WHERE fromid = $uid
+			ORDER BY time DESC 
+			LIMIT 10000";
+		
+		*/
+		
+		
+		
+		
+		
+
 
 	
 	

@@ -6,13 +6,14 @@
  * @author	Owen Mundy <owenmundy.com>
  */
 function data_selector_call(val) 
-{	
-	if (val != "" && data_type_arr.length > 0){
+{	console.log(data_types);
+	if (val != "" && data_types.checkins){
+		
 		// split into allowed_formats_arr
-		allowed_formats_arr = data_type_arr[val][2].split(',');
+		allowed_formats_arr = data_types[val].types.split(',');
 	
 		// possible formats
-		possible_formats_arr = new Array('plain','csv','xml','json','dot','nb','gdf');
+		possible_formats_arr = new Array('plain','csv','xml','json','dot','nb','gdf','graphml');
 		
 		// set all to disabled = true
 		for(i=0; i<possible_formats_arr.length; i++)

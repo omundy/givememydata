@@ -11,17 +11,9 @@ $start_time = time_tracker(NULL); 				// track response time
 /* LOGIN / AUTHENTICATE / CREATE FB OBJECT
 ....................................................................................................*/
 
-if (require_once('inc/fb_config.php'));			// require fb config details
+require_once('inc/fb_config.php');			// require fb config details
+require_once('fb/facebook-php-sdk/src/facebook.php'); 	// include SDK
 
-// get SDK
-try{ 
-	include_once "fb/facebook-php-sdk/src/facebook.php"; 
-}catch(Exception $o){
-	echo '<pre>';
-	print_r($o);
-	echo '</pre>';
-	exit;
-}
 // create application instance
 $facebook = new Facebook(array(
   'appId'  => $fbconfig['appid'],
@@ -29,9 +21,7 @@ $facebook = new Facebook(array(
   'cookie' => true,
 ));
 
-// authenticate user
-$uid = null;
-$user = $facebook->getUser();
+
 
 // scope: Regular permissions
 // reference: https://developers.facebook.com/docs/reference/fql/permissions/
@@ -57,26 +47,36 @@ $scope .= ", user_online_presence, friends_online_presence, read_mailbox, read_s
 
 */
 
-$loginUrl = "https://www.facebook.com/dialog/oauth?client_id=".$fbconfig['appid']
-				."&redirect_uri=".$fbconfig['canvas_page']."&scope=".$scope;
+//$loginUrl = "https://www.facebook.com/dialog/oauth?client_id=".$fbconfig['appid']
+//				."&redirect_uri=".$fbconfig['canvas_page']."&scope=".$scope;
+
+
+// make login url
+// ref: https://developers.facebook.com/docs/reference/php/facebook-getLoginUrl/
+$params = array(
+	'scope' => $scope,
+	'redirect_uri' => $fbconfig['canvas_page']
+);
+$loginUrl = $facebook->getLoginUrl($params);
+
+
+// authenticate user
+$uid = null;
+$uid = $facebook->getUser();
 
 // if no user
-if (!$user) {
+if (!$uid) {
 	// forward the parent window to the authorization url so user can authenticate or login
-	$loginUrl = $facebook->getLoginUrl();
 	echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
 	exit;
 } else {
 	try {
-		// $user exists so proceed
-		$uid = $facebook->getUser();					// current logged-in user
+		// $uid exists so proceed
 		$timezone = profile_timezone_function ($uid);	// get timezone
 		$permissions = $facebook->api('me/permissions');// the permissions granted, handy for checking later
 
-		
-		
-		
-	
+
+
 
 /* LOAD FUNCTIONS / GET DATA
 ....................................................................................................*/
@@ -125,28 +125,36 @@ if (!$user) {
 		}
 
 
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+?><!DOCTYPE html>
+<html lang="en-us" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Give Me My Data</title>
-	<style type="text/css" media="all">@import url(inc/css/styles.css);</style>
-	<script type="text/javascript" src="inc/js/forms.js"></script>
-	<!--<script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"></script>-->
-	<!--<script type="text/javascript"> FB.init("<?php print $app_id; ?>","fb/xd_receiver.htm"); </script>-->
-	<script type="text/javascript" src="inc/js/fb_functions.js"></script>
-	<script language='javascript' type='text/javascript'>
-		var data_type_arr = {};
-		<?php
-			// JS info for dropdowns
-			foreach($data_type_arr as $key => $value){
-				print "data_type_arr['$key'] = ['". $value[0] ."','". $value[1] ."','". $value[2] ."'];\n";
-			}
-		?>
-	</script>
+<meta charset="utf-8">
+<title>Give Me My Data | A Facebook application to reclaim your information</title>
+<meta name="description" content="Give Me My Data helps you reclaim and reuse your Facebook data">
+<meta name="keywords" content="Owen Mundy, Give Me My Data, art, code, software, Facebook, fb, app, application, privacy, data, access, export">
+
+<style type="text/css" media="all">@import url(inc/css/styles.css);</style>
+<?php /*<!--<script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"></script>-->
+<!--<script type="text/javascript"> FB.init("<?php print $app_id; ?>","fb/xd_receiver.htm"); </script>--> */?>
+<script language='javascript' type='text/javascript'>
+var data_type_arr = new Array();
+var data_types = {
+<?php
+	// JS info for dropdowns
+	foreach($data_type_arr as $key => $value){
+		//print "data_type_arr['$key'] = ['". $value[0] ."','". $value[1] ."','". $value[2] ."'];\n";
+		print "'$key':{'title':'".$value[0] ."','slug':'". $value[1] ."','types':'". $value[2] ."'},\n";
+	}
+	
+	// onload="data_selector_call(my_form.data_selector.value)"
+?>
+};
+</script>
+<script type="text/javascript" src="inc/js/fb_functions.js"></script>
+<script type="text/javascript" src="inc/js/forms.js"></script>
 </head>
 
-<body onload="data_selector_call(my_form.data_selector.value)">
+<body>
 
 
 
@@ -222,30 +230,36 @@ if (!$user) {
 		
 		<span>Data<sup><a href="http://givememydata.com/#about_data" target="_blank">1</a></sup></span>
 		
-		<select name="data_selector" onchange="data_selector_call(this.value)" >
-		<?php
-			if ($data_type_arr)
-			{
-				print '<option value="*" id="default" disabled="disabled"'. $selected_format['default'] .'> -- Select a Data Type -- </option>';
-				foreach($data_type_arr as $key => $value)
-				{
-					$disabled = '';
-					// disable section breaks and in-progress data_types
-					if (strstr($key,'***') || strstr($value[0],'***'))
-					{ 
-						$disabled = ' disabled="disabled"'; 
-					}
-					print "<option id='$key' value='$key'". $selected_data[$key] ."$disabled>". $value[0] ."</option>\n";
-					// for JS
-					$js_data_type_arr .= "data_type_arr['$key'] = ['". $value[0] ."','". $value[1] ."','". $value[2] ."'];\n";
-				}
-			}
-			else
-			{
-				print "<option>hello</option>";	
-			}
-		?>
-		</select>
+		
+<?php
+
+$selector = '';
+
+if (isset($data_type_arr)) {
+	
+	$selector .= '<option value="*" id="default" disabled="disabled"'. $selected_format['default'];
+	$selector .= '> -- Select a Data Type -- </option>';
+	
+	foreach($data_type_arr as $key => $value) {
+		
+		$selector .= "<option id='$key' value='$key'". $selected_data[$key];
+		// disable section breaks and in-progress data_types
+		$disabled = '';
+		if (strstr($key,'***') || strstr($value[0],'***')) { 
+			$selector .= ' disabled="disabled"'; 
+		}
+		$selector .= ">". $value[0] ."</option>\n";
+		// not sure what this is for
+		//$js_data_type_arr .= "data_type_arr['$key'] = ['". $value[0] ."','". $value[1] ."','". $value[2] ."'];\n";
+	}
+} else {
+	$selector .= "<option>hello</option>";	
+}
+
+?>
+		
+		<select name="data_selector" onChange="data_selector_call(this.value)" >
+		<?php print $selector; ?></select>
 		
 		
 		
@@ -261,6 +275,7 @@ if (!$user) {
 			<option id="data_format_dot" value="dot" <?php echo $selected_format['dot']?>>DOT (network)</option>
 			<option id="data_format_nb" value="nb" <?php echo $selected_format['nb']?>>Nodebox/PY (network)</option>
 			<option id="data_format_gdf" value="gdf" <?php echo $selected_format['gdf']?>>Guess/GDF (network)</option>
+			<option id="data_format_graphml" value="graphml" <?php echo $selected_format['graphml']?>>GraphML (network)</option>
 		</select>
 	
 		<input type="submit" class="button" name="submit" value="Give me my data" />
@@ -305,15 +320,15 @@ if (!$user) {
 
 	} catch (FacebookApiException $e) {
 		error_log($e);
-		$user = null;
+		$uid = null;
 		echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
 		exit;
 	}
 }
 
-function d($d){
+function test($data){
 	echo '<pre>';
-	print_r($d);
+	print_r($data);
 	echo '</pre>';
 	exit;
 }

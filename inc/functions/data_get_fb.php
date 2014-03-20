@@ -37,7 +37,7 @@ $data_type_arr = array(
 	'groups_feed' 		=> array('Group feeds','groups_feed','xml,json'),
 	
 	
-	'inbox' 			=> array('Inbox','inbox','plain,csv,xml,json'),
+	'inbox' 			=> array('Inbox (Messages)','inbox','plain,csv,xml,json'),
 	
 	'likes'				=> array('Likes','like','plain,csv,xml,json'),
 	'links' 			=> array('Links','link','plain,csv,xml,json','Also see "Wall"'),
@@ -57,7 +57,9 @@ $data_type_arr = array(
 	//'pokes_archive' 	=> array('Pokes (archive)','pokes_archive','plain,csv,xml,json'),
 	
 	'user' 				=> array('Profile','me','plain,csv,xml,json'),
-	'status_updates'	=> array('Status updates','update','plain,csv,xml,json','Also see "Wall"'),
+	'status_updates'	=> array('Status updates','update','plain,csv,xml,json','The feed of posts (including status updates) and links published'),
+	
+	'stream_filter'		=> array('Stream filter','stream_filter','plain,csv,xml,json','A list of stream content filter keys'),
 	
 // subscriptions	
 	'subscribers'		=> array('Subscribers (to me)','subscriber','plain,csv,xml,json'),
@@ -70,10 +72,14 @@ $data_type_arr = array(
 	'wall'				=> array('Your wall (everything)','post','plain,csv,xml,json'),
 	
 	
+	
+	
 	'***2' 				=> array(' -- Customized Data -- '),
 	
-	'friends_graph' 	=> array('Friends Network Graph','connection','plain,csv,xml,json,dot,nb,gdf'),
-	'friends_mutual' 	=> array('Mutual Friends Network Graph','connection','plain,csv,xml,json,dot,nb,gdf'),
+	'friends_graph' 	=> array('Friends Network Graph','connection','plain,csv,xml,json,dot,nb,gdf,graphml'),
+	'friends_mutual' 	=> array('Mutual Friends Network Graph','connection','plain,csv,xml,json,dot,nb,gdf,graphml'),
+	
+	//'friends_num_friends' 	=> array('How Many Friends Do My Friends Have?','connection','plain,csv,xml,json,dot,nb,gdf,graphml'),
 
 );
 
@@ -104,15 +110,16 @@ function return_data($uid,$data_type,$data_format)
 	if ($comments = $data_type_arr[$data_type][3]);
 	
 	// is a separate function required
-	if ($data_type == 'friends_mutual') {  
-		return friends_mutual_function($uid, $data_type, $data_format, $comments); 
-		
+	if ($data_type == 'friends_mutual') { return friends_mutual_function($uid, $data_type, $data_format, $comments); 
 	} else if ($data_type == 'friends_graph') { return friends_graph_function($uid, $data_type, $data_format, $comments);
+	} else if ($data_type == 'friends_num_friends') { return friends_num_friends_function($uid, $data_type, $data_format, $comments);
 	} else if ($data_type == 'inbox') { return inbox_function($uid, $data_type, $data_format, $comments);
 	} else if ($data_type == 'pokes') { return pokes_function($uid, $data_type, $data_format, $comments);
 	} else if ($data_type == 'pokes_archive') { return pokes_archive_function($uid, $data_type, $data_format, $comments);
 	} else if ($data_type == 'groups_members') { return groups_data_function($uid, $data_type, $data_format, $comments,'members');
 	} else if ($data_type == 'groups_feed') { return groups_data_function($uid, $data_type, $data_format, $comments,'feed');
+	// a user had trouble accessing their updates with the FQL method
+	} else if ($data_type == 'status_updates') { return groups_status_updates($uid, $data_type, $data_format, $comments,'update');
 	} 
 	else if ($data_type == 'xxxxx') { 
 		return xxxxxxx($uid, $data_type, $data_format, $comments);
@@ -195,8 +202,7 @@ function friends_graph_function($uid, $data_type, $data_format, $comments='')
 {
 	global $facebook;		// access facebook object
 	global $data_type_arr; 	// access data_type information
-
-	$data = array();	// declare the array before putting things in it
+	$data = array();		// declare the array before putting things in it
 	
 	// query
 	$fql = "SELECT 
@@ -220,7 +226,7 @@ function friends_graph_function($uid, $data_type, $data_format, $comments='')
 		//d($o);
 		//echo "</pre>";
 	}
-	
+	// if successful
 	if ($fql_friend_arrays)
 	{
 		$i = 0;
@@ -247,6 +253,7 @@ function friends_graph_function($uid, $data_type, $data_format, $comments='')
 		else if ($data_format == "dot") { return array2dot($data_dot,$data_type,$data_type_arr[$data_type][1]); } 
 		else if ($data_format == "nb") { return array2nb($data); } 
 		else if ($data_format == "gdf") { return array2gdf($data); } 
+		else if ($data_format == "graphml") { return array2graphml($data); } 
 		else { return "This data cannot be returned in that format."; }
 	}
 	else
@@ -299,14 +306,12 @@ function friends_mutual_function($uid, $data_type, $data_format, $comments='')
 		//echo "</pre>";
 	}
 	
-	
-	
-		
 	// 1. Start by returning all friends data
 	if ($fql_friend_arrays)
 	{
-		
-		// 2. Loop through results
+	
+	
+	// 2. Loop through results
 		foreach ($fql_friend_arrays as $friend_arr) 
 		{
 			// 2a. Make an array just for friend's UIDs
@@ -317,9 +322,6 @@ function friends_mutual_function($uid, $data_type, $data_format, $comments='')
 		// we will need a string of friend's UIDs later
 		$friends_uid_list = implode(",",$friends_uid_arr);
 		
-
-
-
 		
 	// 3. Chunk friends array and make smaller FQL query
 		
@@ -329,8 +331,6 @@ function friends_mutual_function($uid, $data_type, $data_format, $comments='')
 		// loop through each chunk string and make an FQL query
 		foreach ($friends_uid_arr_chunks as $f_uid_chunk) 
 		{
-			
-			
 			// convert chunk to a string
 			$f_uid_str = implode(",",$f_uid_chunk);
 			
@@ -363,8 +363,6 @@ function friends_mutual_function($uid, $data_type, $data_format, $comments='')
 				//d($o);
 				//echo "</pre>";
 			}
-
-
 
 			if ($all_connections_chunks)
 			{
@@ -443,6 +441,7 @@ function friends_mutual_function($uid, $data_type, $data_format, $comments='')
 		else if ($data_format == "dot") { return array2dot($data_dot); } 
 		else if ($data_format == "nb") { return array2nb($data); } 
 		else if ($data_format == "gdf") { return array2gdf($data); } 
+		else if ($data_format == "graphml") { return array2graphml($data); } 
 		else { return "This data cannot be returned in that format."; }	
 	}
 	else
@@ -451,6 +450,61 @@ function friends_mutual_function($uid, $data_type, $data_format, $comments='')
 	}
 }
 
+
+/**
+ * Return the number of friends each friend has
+ *
+ * @params	int $uid FB user ID
+ * 			string $data_type Matches key in $data_types_arr
+ *			string $data_format Data format to return
+ * @return	string
+ * @author	Owen Mundy <owenmundy.com>
+ */  
+function friends_num_friends_function($uid, $data_type, $data_format, $comments='')
+{
+	global $facebook;		// access facebook object
+	global $data_type_arr; 	// access data_type information
+	$data = array();		// declare the array before putting things in it
+	
+	
+	// query
+	$fql = "SELECT 
+				uid, name
+			FROM user 
+			WHERE uid = me() 
+			OR uid IN 
+				(SELECT uid2 FROM friend WHERE uid1 = me())";
+		
+	// attempt to get data
+	try{
+		$param  =   array(
+			'method'    => 'fql.query',
+			'query'     => $fql,
+			'callback'  => ''
+		);
+		$friends = $facebook->api($param);
+	}
+	catch(Exception $o){
+		//echo "<pre>";
+		//d($o);
+		//echo "</pre>";
+	}
+	foreach ($friends as $arr){
+		$count = count($facebook->api('/me/friends'));
+		$fb_data_out[$arr['uid']] = array( 'uid'=>$arr['uid'],
+												'name'=>$arr['name'],
+												'count'=>$count
+												);
+	}
+	
+	
+	// determine output format
+	if ($data_format == "plain") { return array2plain($fb_data_out, $comments); }  
+	else if ($data_format == "csv") { return array2csv($fb_data_out, $comments); } 
+	else if ($data_format == "xml") { return array2xml($fb_data_out,$data_type,$data_type_arr[$data_type][1], $comments); } 
+	else if ($data_format == "json") { return array2json($fb_data_out, $comments); } 
+	else { return "This data cannot be returned in that format."; }
+}
 
 
 
@@ -580,6 +634,35 @@ function groups_data_function($uid, $data_type, $data_format, $comments='',$what
 }
 
 
+
+// STATUS UPDATES
+function groups_status_updates($uid, $data_type, $data_format, $comments='',$whatdata)
+{
+	global $facebook;		// access facebook object
+	global $data_type_arr; 	// access data_type information
+	$data = array();	// declare the array before putting things in it
+	try{
+		$uid = $facebook->getUser();
+	    $fb_data_out = $facebook->api('/me/feed?fields=message,link,actions,place,tags,privacy');
+	}
+	catch(Exception $o){
+		/*echo "<pre>";
+		d($o);
+		echo "</pre>"; */
+	}
+	$data = $fb_data_out['data'];
+
+	//print "<pre>"; print_r($data); print "</pre>"; 
+	
+	
+
+	// determine output format
+	if ($data_format == "plain") { return array2plain($fb_data_out, $comments); }  
+	else if ($data_format == "csv") { return array2csv($fb_data_out, $comments); } 
+	else if ($data_format == "xml") { return array2xml($fb_data_out,$data_type,$data_type_arr[$data_type][1], $comments); } 
+	else if ($data_format == "json") { return array2json($fb_data_out, $comments); } 
+	else { return "This data cannot be returned in that format."; }
+}
 
 
 
