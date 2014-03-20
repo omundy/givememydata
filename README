@@ -32,9 +32,11 @@ To do list for developers who want to contribute
 
 
 
-<b>Data</b>
-	<ul>
-		<li><del>Retrieve mutual friends</del>.</li>
+Data
+
++ ~Retrieve mutual friends~
+
+
 		<li><del>Get data from groups</del>.</li>
 		<li>Export "all."</li>
 		<li>Translate UNIX timestamp to human-readable <a href="http://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601 / W3 datetime</a> (defaults to user's timezone).</li>
