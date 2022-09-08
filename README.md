@@ -1,19 +1,18 @@
 
 	
-<h4>About Give Me My Data</h4>
-<hr>
+# Give Me My Data
 
-Give Me My Data is a Facebook application that helps users export their data out of Facebook for reuse in visualizations, archives, or any possible method of digital storytelling. Data can be exported in common formats like CSV, XML, and JSON as well as customized network graph formats.
+Give Me My Data was a Facebook application that helped users export their data out of Facebook. Reasons included making artwork, archiving and deleting your account, or circumventing the interface Facebook provides. Data could be exported in CSV, XML, and other common formats.
 
 
-More information: http://givememydata.com/<br>
-Live application: https://apps.facebook.com/give_me_my_data/
-
+- [Statement on Facebook decision to block the app](http://givememydata.com/)
+- [Visualizations and screenshots from the project](https://owenmundy.com/site/give-me-my-data)
 
 
 
-<h4>Usage</h4>
-<hr>
+
+<!--
+## Usage
 
 1. Visit https://developers.facebook.com/ and Register as a developer
 2. Create a new Facebook Application
@@ -21,19 +20,13 @@ Live application: https://apps.facebook.com/give_me_my_data/
 4. Paste the App ID/API Key, App Secret, and App Namespace into /inc/fb_config.php
 
 
-
-
-<h4>Software included in this project</h4>
-<hr>
-
+## Software included in this project
 Facebook PHP SDK (v.3.2.2)
 https://github.com/facebook/facebook-php-sdk
 
 
 
-<a name="requests"></a>
-<h4>Requests / To do list for developers who want to contribute</h4>
-<hr>
+## Requests / To do list for developers who want to contribute<
 
 <b>Data</b>
 <ul>
@@ -65,4 +58,6 @@ https://github.com/facebook/facebook-php-sdk
 <ul>
 	<li>Create instructions / tutorials for using data to make visualizations.</li>
 </ul>
+
+-->
 
