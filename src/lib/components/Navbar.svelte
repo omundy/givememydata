@@ -14,11 +14,6 @@
 		<a class="nav-link" class:active={$page.url.pathname === '/about'} href="{base}/about">About</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" class:active={$page.url.pathname === '/statement'} href="{base}/statement"
-			>Statement</a
-		>
-	</li>
-	<li class="nav-item">
 		<a
 			class="nav-link"
 			class:active={$page.url.pathname === '/visualizations'}

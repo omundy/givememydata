@@ -4,15 +4,15 @@
 Give Me My Data was a Facebook application that helped users export their data out of Facebook. Reasons included making artwork, archiving and deleting your account, or circumventing the interface Facebook provides. Data could be exported in CSV, XML, and other common formats.
 
 
-- [Statement on Facebook decision to block the app](http://givememydata.com/)
+- [Statement on Facebook decision to block the app and original website](https://omundy.github.io/givememydata)
 - [Visualizations and screenshots from the project](https://owenmundy.com/site/give-me-my-data)
 
 
 
 ## Dev Notes
 
-
-
+These docs are sometimes better
+https://kit-docs-demo.vercel.app/docs/component-format/script
 
 
 
@@ -28,6 +28,46 @@ npm install
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+
+
+
+
+## Development > CSS
+
+Bootstrap
+https://github.com/svelte-add/bootstrap
+
+Override Bootstrap tutorial
+https://www.freecodecamp.org/news/how-to-customize-bootstrap-with-sass/
+
+
+```bash
+npx svelte-add@latest bootstrap
+```
+
+
+## Dev > Routing & Data
+
+The <svelte:head> element allows you to insert elements inside the <head> of your document:
+https://svelte.dev/tutorial/svelte-head
+
+Use `class:active={$page.url.pathname === '/about'}` to insert a class name in a nav
+https://svelte.dev/examples/classes
+
+Access page properties
+https://stackoverflow.com/a/68578884/441878
+
+```svelte
+<script>
+  import { page } from '$app/stores';
+</script>
+
+<h1>{$page.url.pathname}</h1>
+```
+
+In SvelteKit, what's the difference between +page.js, +page.server.js and +page.svelte?
+https://stackoverflow.com/questions/76244344/in-sveltekit-whats-the-difference-between-page-js-page-server-js-and-page
+https://github.com/sveltejs/kit/issues/7411
 
 
 
@@ -50,47 +90,10 @@ npm run v
 ```
 
 
-
-
-
-## Development
-
-Bootstrap
-https://github.com/svelte-add/bootstrap
-
-Override Bootstrap tutorial
-https://www.freecodecamp.org/news/how-to-customize-bootstrap-with-sass/
-
-
-```bash
-npx svelte-add@latest bootstrap
-```
-
-The <svelte:head> element allows you to insert elements inside the <head> of your document:
-https://svelte.dev/tutorial/svelte-head
-
-Use `class:active={$page.url.pathname === '/about'}` to insert a class name in a nav
-https://svelte.dev/examples/classes
-
-Access page properties
-https://stackoverflow.com/a/68578884/441878
-
-```svelte
-<script>
-  import { page } from '$app/stores';
-</script>
-
-<h1>{$page.url.pathname}</h1>
-```
-
-
-
 ## Deployment
 
 Setup project
-https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages
-https://github.com/metonym/sveltekit-gh-pages
-
-But use gh-pages
-https://futurewebdesign.au/posts/gh-pages/
+[How to deploy a SvelteKit website to GitHub pages](https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages), 2023
+[metonym/sveltekit-gh-pages](https://github.com/metonym/sveltekit-gh-pages)
+[Publishing an Astro site to Github Pages](https://futurewebdesign.au/posts/gh-pages/)
 https://www.npmjs.com/package/gh-pages

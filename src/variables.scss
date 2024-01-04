@@ -18,10 +18,60 @@ $secondary: green;
 	--bs-navbar-active-color: var(--primary);
 }
 
-
-
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/variables-dark';
 @import 'bootstrap/scss/maps';
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;500&display=swap');
+
+html,
+body {
+	--bs-body-font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+	font-size: calc(1.1rem + 1.25vw) !important;
+	margin: 0 0 1rem 0 !important;
+}
+h2 {
+	font-size: calc(1.1rem + 0.95vw) !important;
+	margin: 1rem 0 1rem 0 !important;
+	// border-top: 1px solid #ccc;
+	padding: 1rem 0 0;
+	color: #333;
+}
+
+.callout {
+	font:
+		2rem/3rem Georgia,
+		'Times New Roman',
+		Times,
+		serif;
+	font-style: italic;
+	padding: 1rem 0;
+}
+
+blockquote {
+	color: #333;
+	padding: 14px 18px;
+	margin: 0;
+	font-family: 'Roboto Mono', monospace;
+	background: #eceff5;
+}
+.well {
+	display: block;
+	-moz-border-radius: 0.5rem;
+	-webkit-border-radius: 0.5rem;
+	border-radius: 0.5rem;
+}
+.thumb_caption {
+	font-size:90%;
+}
