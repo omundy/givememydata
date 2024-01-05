@@ -12,10 +12,10 @@
 			<div class="callout" style="text-align: center">
 				<div class="logo">
 					<a href="{base}/" title="home"
-						><img src="{base}/assets/img/gmmd_Icon_475w.png" width="90" height="90" alt="Give Me My Data logo" /></a>
+						><img src="{base}/assets/img/gmmd_Icon_475w.png" width="90" height="90" alt="Give Me My Data fancy logo" /></a>
 				</div>
 
-				Give Me My Data 2009–2016
+				<h1 class="mt-3">Give Me My Data 2009–2016</h1>
 			</div>
 
 			<br />
@@ -59,7 +59,6 @@
 				critiqued. Thank you to everyone who used it and supported me in this process.
 			</p>
 
-			<p>Sincerely,</p>
 
 			<p>Owen Mundy</p>
 

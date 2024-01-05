@@ -15,11 +15,11 @@
 
 			<p>
 				<a href="{base}/assets/img/app_20100428_howto_data.png" target="_blank">
-					<img src="{base}/assets/img/app_20100428_howto_data_t.png" alt="screenshot" /></a>
+					<img src="{base}/assets/img/app_20100428_howto_data_t.png" alt="screenshot step 1" /></a>
 				<a href="{base}/assets/img/app_20100428_howto_format.png" target="_blank">
-					<img src="{base}/assets/img/app_20100428_howto_format_t.png" alt="screenshot" /></a>
+					<img src="{base}/assets/img/app_20100428_howto_format_t.png" alt="screenshot step 2" /></a>
 				<a href="{base}/assets/img/app_20100428.png" target="_blank">
-					<img src="{base}/assets/img/app_20100428_t.png" alt="screenshot" /></a>
+					<img src="{base}/assets/img/app_20100428_t.png" alt="screenshot step 3" /></a>
 			</p>
 
 			<ol>
@@ -61,16 +61,13 @@
 				available. For example you can view XML files with the <a href="http://www.mozilla.com/firefox/" target="_blank"
 					>Firefox web browser</a
 				>. Also, check out a list of
-				<a
-					href="http://manyeyes.alphaworks.ibm.com/manyeyes/page/Visualization_Options.html"
-					target="_blank"
-					title="Visualization Options">Visualization Options</a>
+				<a href="http://manyeyes.alphaworks.ibm.com/manyeyes/page/Visualization_Options.html" target="_blank"
+					>Visualization Options</a>
 				for CSV and XML data on the <a href="http://many-eyes.com/" target="_blank">ManyEyes website</a>.
 			</p>
 
 			<p>
-				<a class="gotoapp" href="http://apps.facebook.com/give_me_my_data/" target="_parent" title="Application"
-					>Go to Application</a>
+				<a class="gotoapp" href="http://apps.facebook.com/give_me_my_data/" target="_parent">Go to Application</a>
 			</p>
 
 			<h2>How can I get my groups, likes, links, etc. back onto my info page?</h2>
@@ -85,7 +82,7 @@
 				when you encounter this screen to start reclaiming your data. Give Me My Data only requests read access and will
 				not write to your profile without your permission.
 			</p>
-			<p><img src="assets/img/allow_access_dialog.png" alt="allow access dialog" /></p>
+			<p><img src="{base}/assets/img/allow_access_dialog.png" alt="allow access dialog" /></p>
 
 			<h2>This app does not work, it did not _________________.</h2>
 			<p>
@@ -96,13 +93,16 @@
 			<h2>Can I get live data or incoming messages, shares, etc. realtime?</h2>
 			<p>Give Me my Data is only available as a web browser-based application.</p>
 
+			<h2>What is your Privacy Policy</h2>
 
-            <h2>What is your Privacy Policy</h2>
-	
-            <p>Give Me My Data respects your privacy and therefore does not save any information about you or your friends in any form. In addition to the <a href="http://www.facebook.com/terms.php" target="_blank">Statement of Rights and Responsibilities</a>, required for anyone who uses Facebook, applications and developers are bound by the <a href="http://developers.facebook.com/policy/" target="_blank">Facebook Developer Principles &amp; Policies</a></p>
-        
-
-
+			<p>
+				Give Me My Data respects your privacy and therefore does not save any information about you or your friends in
+				any form. In addition to the <a href="http://www.facebook.com/terms.php" target="_blank"
+					>Statement of Rights and Responsibilities</a
+				>, required for anyone who uses Facebook, applications and developers are bound by the
+				<a href="http://developers.facebook.com/policy/" target="_blank"
+					>Facebook Developer Principles &amp; Policies</a>
+			</p>
 
 			<h2>What data formats are available?</h2>
 
@@ -120,19 +120,14 @@
 					</tr>
 
 					<tr>
-						<td class="ext"
-							><a href="http://en.wikipedia.org/wiki/Plain_text" target="_blank" title="plain text">TXT</a></td>
-						<td><a href="http://en.wikipedia.org/wiki/Plain_text" target="_blank" title="plain text">plain text</a></td>
+						<td class="ext"><a href="http://en.wikipedia.org/wiki/Plain_text" target="_blank">TXT</a></td>
+						<td>plain text</td>
 						<td>Text that contains no visual formatting.</td>
 					</tr>
 
 					<tr>
-						<td class="ext"
-							><a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank" title="CSV">CSV</a></td>
-						<td
-							><a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank" title="CSV"
-								>Comma-Separated Values</a
-							></td>
+						<td class="ext"><a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV</a></td>
+						<td>Comma-Separated Values</td>
 						<td
 							>Used for the digital storage of tabular data such as a database or spreadsheet. Each line in the CSV file
 							corresponds to a row in the table. CSV files can be opened in any spreadsheet application like Microsoft
@@ -140,55 +135,44 @@
 					</tr>
 
 					<tr>
-						<td class="ext"><a href="http://en.wikipedia.org/wiki/XML" target="_blank" title="XML">XML</a></td>
-						<td
-							><a href="http://en.wikipedia.org/wiki/XML" target="_blank" title="XML">Extensible Markup Language</a
-							></td>
+						<td class="ext"><a href="http://en.wikipedia.org/wiki/XML" target="_blank">XML</a></td>
+						<td>Extensible Markup Language</td>
 						<td>A plain text markup language for storing and transporting data.</td>
 					</tr>
 
 					<tr>
-						<td class="ext"><a href="http://en.wikipedia.org/wiki/JSON" target="_blank" title="JSON">JSON</a></td>
-						<td
-							><a href="http://en.wikipedia.org/wiki/JSON" target="_blank" title="JSON">JavaScript Object Notation</a
-							></td>
+						<td class="ext"><a href="http://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a></td>
+						<td>JavaScript Object Notation</td>
 						<td>A lightweight text-based open standard designed for human-readable data interchange.</td>
 					</tr>
 
 					<tr>
-						<td class="ext"><a href="http://en.wikipedia.org/wiki/DOT_language" target="_blank" title="DOT">DOT</a></td>
-						<td><a href="http://www.graphviz.org/" target="_blank" title="Graphviz">Graphviz DOT Language</a></td>
+						<td class="ext"><a href="http://en.wikipedia.org/wiki/DOT_language" target="_blank">DOT</a></td>
+						<td>Graphviz DOT Language</td>
 						<td
-							>A plain text graph description language for use with <a
-								href="http://www.graphviz.org/"
-								target="_blank"
-								title="Graphviz">Graphviz</a
+							>A plain text graph description language for use with <a href="http://www.graphviz.org/" target="_blank"
+								>Graphviz</a
 							>.</td>
 					</tr>
 
 					<tr>
-						<td class="ext"><a href="http://en.wikipedia.org/wiki/SQL" target="_blank" title="SQL">SQL</a></td>
-						<td
-							><a href="http://en.wikipedia.org/wiki/SQL" target="_blank" title="SQL">Structured Query Language</a></td>
+						<td class="ext"><a href="http://en.wikipedia.org/wiki/SQL" target="_blank">SQL</a></td>
+						<td>Structured Query Language</td>
 						<td>A database computer language designed for managing data in relational database management systems.</td>
 					</tr>
 
 					<tr>
 						<td class="ext"
-							><a href="http://freemind.sourceforge.net/wiki/index.php/Main_Page" target="_blank" title="MM">MM</a></td>
+							><a href="http://freemind.sourceforge.net/wiki/index.php/Main_Page" target="_blank">MM</a></td>
+						<td>FreeMind</td>
 						<td
-							><a href="http://freemind.sourceforge.net/wiki/index.php/Main_Page" target="_blank" title="MM">FreeMind</a
-							></td>
-						<td
-							>An XML-based language used by <a
-								href="http://freemind.sourceforge.net/wiki/index.php/Main_Page"
-								target="_blank"
-								title="MM">FreeMind</a> mind mapping software.</td>
+							>An XML-based language used by <a href="https://en.wikipedia.org/wiki/FreeMind" target="_blank"
+								>FreeMind</a> mind mapping software.</td>
 					</tr>
 
 					<tr>
-						<td class="ext"><a href="http://nodebox.net" target="_blank" title="NodeBox">PY</a></td>
-						<td><a href="http://nodebox.net" target="_blank" title="NodeBox">NodeBox</a></td>
+						<td class="ext"><a href="http://nodebox.net" target="_blank">PY</a></td>
+						<td>NodeBox</td>
 						<td>A Python IDE for creating visualizations.</td>
 					</tr>
 				</table>
@@ -203,12 +187,29 @@
 		border-radius: 0.5rem;
 		background: #eceff5;
 	}
-	table {
+
+	table * {
+		background-color: transparent !important;
+		padding: 0.25rem;
+	}
+
+	/* No idea why this was added https://github.com/twbs/bootstrap/issues/38779 */
+	.table > :not(caption) > * > * {
+		padding: 0;
+		color: var(--bs-body-color);
+		background-color: transparent;
+	}
+
+	.table a {
+		color: var(--primary);
+	}
+
+	/* table {
 		padding: 10px;
 		margin: 0;
 		border: 0;
-	}
-	th {
+	} */
+	/* th {
 		padding: 4px 5px 8px 5px;
 		font-size: 85%;
 		font-weight: normal;
@@ -229,5 +230,5 @@
 	.name {
 		width: 140px;
 		text-align: left;
-	}
+	} */
 </style>

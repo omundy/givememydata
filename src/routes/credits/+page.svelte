@@ -18,7 +18,7 @@
 			</p>
 
 			<!-- <p>
-				<a href="http://twitter.com/givememydata" title="Give Me My Data on Twitter" target="_blank"
+				<a href="http://twitter.com/givememydata" target="_blank"
 					><img
 						src="http://www.twitter-button.net/buttons/113.png"
 						alt="Twitter logo"
@@ -35,8 +35,7 @@
 				<!-- <img src="{base}/assets/img/logo_nyt.png" alt="logo" width="200" /><br /> -->
 				<a
 					href="http://gadgetwise.blogs.nytimes.com/2010/05/01/facebook-app-brings-back-data/"
-					target="_blank"
-					title="Facebook App Brings Back Data">Facebook App Brings Back Data</a
+					target="_blank">Facebook App Brings Back Data</a
 				><br />
 				by Riva Richmond, The New York Times, May 1, 2010
 			</p>
@@ -46,7 +45,6 @@
 				<a
 					href="http://www.readwriteweb.com/archives/give_me_my_data_refills_blanked_facebook_profiles.php"
 					target="_blank"
-					title="Give Me My Data Helps Refill Blanked Facebook Profiles"
 					>Give Me My Data Helps Refill Blanked Facebook Profiles</a
 				><br />
 				by Curt Hopkins, ReadWriteWeb, May 2, 2010
@@ -57,7 +55,6 @@
 				<a
 					href="http://www.pcprofessionale.it/2010/05/03/facebook-dammi-indietro-i-miei-dati/"
 					target="_blank"
-					title="Camagni, Valeria. Facebook, dammi indietro i miei dati (Facebook, give me back my data). PC Professionale, Milan, Italy. May 3, 2010."
 					>Facebook, dammi indietro i miei dati ("Facebook, give me back my data")</a
 				><br />
 				by Valeria Camagni, PC Professionale, Milan, Italy. May 3, 2010.
@@ -68,7 +65,6 @@
 				<a
 					href="http://consumerist.com/2010/05/two-facebook-apps-to-help-you-fight-back-against-facebook.html"
 					target="_blank"
-					title="Two Facebook Apps To Help You Fight Back Against Facebook"
 					>Two Facebook Apps To Help You Fight Back Against Facebook</a
 				><br />
 				by Chris Walters, The Consumerist, May 4, 2010
@@ -78,8 +74,7 @@
 				<!-- <img src="{base}/assets/img/logo_techcrunch.png" alt="logo" width="200" /><br /> -->
 				<a
 					href="http://techcrunch.com/2010/05/07/facebook’s-disconnect-open-doors-closed-exits/"
-					target="_blank"
-					title="Facebook's Disconnect: Open Doors, Closed Exits">Facebook’s Disconnect: Open Doors, Closed Exits</a
+					target="_blank">Facebook’s Disconnect: Open Doors, Closed Exits</a
 				><br />
 				by Rohit Khare, TechCrunch, May 7, 2010
 			</p>
@@ -87,7 +82,6 @@
 			<p>
 				<!-- <a href="http://owenmundy.com/blog/wp-content/uploads/2010/05/565px-Bild_logo.svg.png"
 					><img
-						title=""
 						src="http://owenmundy.com/blog/wp-content/uploads/2010/05/565px-Bild_logo.svg-150x150.png"
 						alt="565px-Bild_logo.svg"
 						style="width:80px" /></a
@@ -108,9 +102,7 @@
 					><img src="{base}/assets/img/logo_bbcnews.png" alt="BBC" style="width:80px" /></a
 				><br /> -->
 				<a
-					href="http://news.bbc.co.uk/2/hi/programmes/click_online/8744514.stm"
-					rel="bookmark"
-					title="Permanent Link to BBC News reports on Give Me My Data">3D movies and extracting Facebook data</a
+					href="http://news.bbc.co.uk/2/hi/programmes/click_online/8744514.stm">3D movies and extracting Facebook data</a
 				><br />
 				by Kate Russell, BBC News, Friday, June 25th, 2010
 			</p>

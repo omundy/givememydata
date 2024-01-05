@@ -14,7 +14,7 @@
 			<div class="callout">Give Me My Data helps you<br /> reclaim and reuse your Facebook data.</div>
 
 			<p>
-				Give Me My Data <s>is</s> was a Facebook application that helps users export their data out of Facebook for reuse
+				Give Me My Data <s>is</s><b><i>was</i></b> a Facebook application that helps users export their data out of Facebook for reuse
 				in visualizations, archives, or any possible method of digital storytelling. Data can be exported in common formats
 				like CSV, XML, and JSON as well as customized network graph formats.
 			</p>

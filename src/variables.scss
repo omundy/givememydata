@@ -7,7 +7,8 @@ $primary: #3a5998;
 $secondary: green;
 
 :root {
-	--primary: #{3a5998};
+	--primary: #3a5998;
+	--primary-translucent: #3a5998;
 	--blue: var(--primary);
 	--blue-light1: #6d8bc7;
 	--blue-light2: #93a8d4;
@@ -29,12 +30,13 @@ $secondary: green;
 html,
 body {
 	--bs-body-font-family: 'Roboto', sans-serif;
+	--header-font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 h1,
 h2,
 h3 {
-	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-family: var(--header-font-family);
 }
 
 h1 {
@@ -73,5 +75,5 @@ blockquote {
 	border-radius: 0.5rem;
 }
 .thumb_caption {
-	font-size:90%;
+	font-size: 90%;
 }

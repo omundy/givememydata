@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <link rel="icon" href="%sveltekit.assets%/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Give Me My Data helps you reclaim and reuse your Facebook data">
@@ -10,11 +10,29 @@
     <meta name="robots" content="INDEX, FOLLOW">
     <meta name="revisit-after" content="7 days">
     <meta name="google-site-verification" content="KyLO8FJyxW64ILQDwFaA-7pu2PbzjL3X-zO96BCyoM4">
-
-
+    <title>Give Me My Data</title>
     %sveltekit.head%
 </head>
 <body data-sveltekit-preload-data="hover">
     <div style="display: contents">%sveltekit.body%</div>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKQ5512KSD"></script>
+    <script>
+        // @ts-nocheck
+        window.dataLayer = window.dataLayer || []
+        function gtag() {
+            dataLayer.push(arguments)
+        }
+        gtag('js', new Date())
+        gtag('config', 'G-JKQ5512KSD')
+    </script>
+
+    <script is:inline type="text/javascript">
+        var sc_project = 5534444,
+            sc_invisible = 1,
+            sc_security = 'b637178c'
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+
 </body>
 </html>

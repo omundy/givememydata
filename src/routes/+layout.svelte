@@ -1,22 +1,35 @@
 <script>
-	import '../app.scss';
-	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+
+	// fix to load bootstrap.js
+	// https://github.com/svelte-add/svelte-add/issues/327
+	import { onMount } from 'svelte';
+	import '../app.scss';
+	import { browser } from '$app/environment';
+	onMount(async () => {
+		if (!browser) return;
+		await import('bootstrap');
+	});
 
 	import { setTitle } from '$lib/document';
-	setTitle('');
+	let title = setTitle('');
 </script>
+
+<!-- <svelte:head>
+	<title>{title ? title + ' | ' : ''} Give Me My Data</title>
+</svelte:head> -->
 
 <div class="layout">
 	<Header>
-		<Navbar slot="Navbar" />
+		<Navbar slot="Navbar" location="header" />
 	</Header>
 	<main>
 		<slot />
 	</main>
 	<Footer>
-		<Navbar slot="Navbar" />
+		<Navbar slot="Navbar" location="footer" />
 	</Footer>
 </div>
 
