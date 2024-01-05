@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	// console.log($page.url.pathname)
 
@@ -13,7 +14,7 @@
 	<div class="row">
 		<div class="col-12 col-lg-8 offset-lg-2">
 			<h1>{$page.status}: {$page.error.message ?? 'Error'}</h1>
-			<a href="/">Go home</a>
+			<a href="{base}/">Go home</a>
 		</div>
 	</div>
 </div>

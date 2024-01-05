@@ -93,7 +93,13 @@ npm run v
 ## Deployment
 
 Setup project
+
 [How to deploy a SvelteKit website to GitHub pages](https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages), 2023
 [metonym/sveltekit-gh-pages](https://github.com/metonym/sveltekit-gh-pages)
 [Publishing an Astro site to Github Pages](https://futurewebdesign.au/posts/gh-pages/)
 https://www.npmjs.com/package/gh-pages
+
+See also
+
+https://kit.svelte.dev/docs/configuration#paths
+https://kit.svelte.dev/docs/adapter-static#github-pages

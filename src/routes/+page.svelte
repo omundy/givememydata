@@ -20,7 +20,7 @@
 
 			<br />
 			<p>
-				Launched in 2009, <a href="http://givememydata.com" target="_blank">Give Me My Data</a> helped thousands of users
+				Launched in 2009, <a href="{base}/about" target="_blank">Give Me My Data</a> helped thousands of users
 				retrieve their data from Facebook. Whether they wanted their information in reusable data formats to make visualizations,
 				archive it, or to see exactly what Facebook was tracking and sharing about them, Give Me My Data provided this utility,
 				free of charge.
