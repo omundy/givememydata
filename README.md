@@ -11,9 +11,14 @@ Give Me My Data was a Facebook application that helped users export their data o
 
 ## Dev Notes
 
+https://learn.svelte.dev/tutorial/declaring-props
 These docs are sometimes better
 https://kit-docs-demo.vercel.app/docs/component-format/script
-
+This series is great
+https://www.youtube.com/watch?v=n8Kk7uvsx9A&list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO&index=7
+https://blog.logrocket.com/how-to-build-simple-svelte-js-app/
+https://www.contentful.com/blog/svelte-tutorial/
+https://prismic.io/blog/svelte-and-sveltekit
 
 
 ### Setup
@@ -103,3 +108,10 @@ See also
 
 https://kit.svelte.dev/docs/configuration#paths
 https://kit.svelte.dev/docs/adapter-static#github-pages
+
+
+
+```bash
+# deply to github
+npm run deploy
+```

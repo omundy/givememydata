@@ -36,9 +36,17 @@
 <style>
 	.layout {
 		background-color: var(--grey-light1) !important;
+
+        /* always move footer to bottom of viewport - part 1 */
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
 	}
 	main {
 		min-height: 600px;
 		background-color: white !important;
+
+        /* always move footer to bottom of viewport - part 2 */
+		flex: 1;
 	}
 </style>

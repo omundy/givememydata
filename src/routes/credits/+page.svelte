@@ -12,7 +12,7 @@
 			<h1>{title}</h1>
 
 			<p>
-				Give Me My Data was developed by <a href="http://owenmundy.com/site/give-me-my-data" target="_blank"
+				Give Me My Data was developed <a href="http://owenmundy.com/site/give-me-my-data" target="_blank"
 					>Owen Mundy</a
 				>.
 			</p>
@@ -33,50 +33,44 @@
 
 			<p>
 				<!-- <img src="{base}/assets/img/logo_nyt.png" alt="logo" width="200" /><br /> -->
-				<a
-					href="http://gadgetwise.blogs.nytimes.com/2010/05/01/facebook-app-brings-back-data/"
-					target="_blank">Facebook App Brings Back Data</a
+				<a href="http://gadgetwise.blogs.nytimes.com/2010/05/01/facebook-app-brings-back-data/" target="_blank"
+					>Facebook App Brings Back Data</a
 				><br />
-				by Riva Richmond, The New York Times, May 1, 2010
+				Riva Richmond, The New York Times, May 1, 2010
 			</p>
 
 			<p>
 				<!-- <img src="{base}/assets/img/logo_readwriteweb.png" alt="logo" width="200" /><br /> -->
 				<a
 					href="http://www.readwriteweb.com/archives/give_me_my_data_refills_blanked_facebook_profiles.php"
-					target="_blank"
-					>Give Me My Data Helps Refill Blanked Facebook Profiles</a
+					target="_blank">Give Me My Data Helps Refill Blanked Facebook Profiles</a
 				><br />
-				by Curt Hopkins, ReadWriteWeb, May 2, 2010
+				Curt Hopkins, ReadWriteWeb, May 2, 2010
 			</p>
 
 			<div>
 				<!-- <img src="{base}/assets/img/logo_pc_professionale.png" alt="logo" width="60" /><br /> -->
-				<a
-					href="http://www.pcprofessionale.it/2010/05/03/facebook-dammi-indietro-i-miei-dati/"
-					target="_blank"
+				<a href="http://www.pcprofessionale.it/2010/05/03/facebook-dammi-indietro-i-miei-dati/" target="_blank"
 					>Facebook, dammi indietro i miei dati ("Facebook, give me back my data")</a
 				><br />
-				by Valeria Camagni, PC Professionale, Milan, Italy. May 3, 2010.
+				Valeria Camagni, PC Professionale, Milan, Italy. May 3, 2010.
 			</div>
 
 			<p>
 				<!-- <img src="{base}/assets/img/logo_theconsumerist.png" alt="logo" width="200" /><br /> -->
 				<a
 					href="http://consumerist.com/2010/05/two-facebook-apps-to-help-you-fight-back-against-facebook.html"
-					target="_blank"
-					>Two Facebook Apps To Help You Fight Back Against Facebook</a
+					target="_blank">Two Facebook Apps To Help You Fight Back Against Facebook</a
 				><br />
-				by Chris Walters, The Consumerist, May 4, 2010
+				Chris Walters, The Consumerist, May 4, 2010
 			</p>
 
 			<p>
 				<!-- <img src="{base}/assets/img/logo_techcrunch.png" alt="logo" width="200" /><br /> -->
-				<a
-					href="http://techcrunch.com/2010/05/07/facebook’s-disconnect-open-doors-closed-exits/"
-					target="_blank">Facebook’s Disconnect: Open Doors, Closed Exits</a
+				<a href="http://techcrunch.com/2010/05/07/facebook’s-disconnect-open-doors-closed-exits/" target="_blank"
+					>Facebook’s Disconnect: Open Doors, Closed Exits</a
 				><br />
-				by Rohit Khare, TechCrunch, May 7, 2010
+				Rohit Khare, TechCrunch, May 7, 2010
 			</p>
 
 			<p>
@@ -94,17 +88,17 @@
 				<a href="http://bit.ly/9HE6Lv" target="_blank"
 					>The most embarrassing messages on Facebook, StudiVZ, and Twitter</a
 				><br />
-				Bild, May 22, 2010
+				Das Bild, May 22, 2010
 			</p>
 
 			<p>
 				<!-- <a href="http://news.bbc.co.uk/2/hi/programmes/click_online/8744514.stm" target="_blank"
 					><img src="{base}/assets/img/logo_bbcnews.png" alt="BBC" style="width:80px" /></a
 				><br /> -->
-				<a
-					href="http://news.bbc.co.uk/2/hi/programmes/click_online/8744514.stm">3D movies and extracting Facebook data</a
+				<a href="http://news.bbc.co.uk/2/hi/programmes/click_online/8744514.stm"
+					>3D movies and extracting Facebook data</a
 				><br />
-				by Kate Russell, BBC News, Friday, June 25th, 2010
+				Kate Russell, BBC News, Friday, June 25th, 2010
 			</p>
 		</div>
 	</div>
