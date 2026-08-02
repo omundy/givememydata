@@ -1,4 +1,9 @@
 {
 	"extends": "astro/tsconfigs/base",
-	"exclude": ["build", "node_modules"]
+	"exclude": ["build", "node_modules"],
+	"compilerOptions": {
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	}
 }

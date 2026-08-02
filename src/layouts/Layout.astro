@@ -1,9 +1,9 @@
 ---
-import Header from '../components/Header.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import { base } from '../lib/base.js';
-import '../styles/app.scss';
+import Header from '@/components/Header.astro';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import { base } from '@/lib/base.js';
+import '@/styles/app.scss';
 
 interface Props {
 	title?: string;
@@ -54,9 +54,11 @@ const { title = '' } = Astro.props;
 		</script>
 
 		<script is:inline type="text/javascript">
+			/* eslint-disable no-unused-vars */
 			var sc_project = 5534444,
 				sc_invisible = 1,
 				sc_security = 'b637178c';
+			/* eslint-enable no-unused-vars */
 		</script>
 		<script is:inline type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
 

@@ -12,12 +12,11 @@
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build --branch gh-pages --dotfiles"
 	},
-	"dependencies": {
-		"astro": "^5.1.1"
-	},
 	"devDependencies": {
-		"@astrojs/check": "^0.9.4",
+		"@astrojs/check": "^0.9.10",
 		"@popperjs/core": "^2.11.8",
+		"@typescript-eslint/parser": "^8.65.0",
+		"astro": "^7.1.6",
 		"bootstrap": "^5.3.8",
 		"eslint": "^8.57.1",
 		"eslint-config-prettier": "^9.1.0",
