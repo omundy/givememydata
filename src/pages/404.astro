@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { base } from '../lib/base.js';
+---
+
+<Layout title="404">
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-12 col-lg-8 offset-lg-2">
+				<h1>404: Page not found</h1>
+				<a href={`${base}/`}>Go home</a>
+			</div>
+		</div>
+	</div>
+</Layout>

@@ -3,7 +3,7 @@ node_modules
 # Output
 .output
 .vercel
-/.svelte-kit
+/.astro
 /build
 
 # OS
@@ -15,10 +15,6 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.test
-
-# Vite
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
 
 # Project
 old-website

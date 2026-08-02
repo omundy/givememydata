@@ -1,0 +1,46 @@
+---
+import { base } from '../lib/base.js';
+
+interface Props {
+	location?: string;
+}
+
+const { location = '' } = Astro.props;
+
+// Astro.url.pathname includes the configured base, so normalize both sides
+// (and drop any trailing slash) before comparing against each link's path.
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const links = [
+	{ href: `${base}/`, path: base || '/', label: 'Status' },
+	{ href: `${base}/about`, path: `${base}/about`, label: 'About' },
+	{ href: `${base}/visualizations`, path: `${base}/visualizations`, label: 'Visualizations' },
+	{ href: `${base}/faq`, path: `${base}/faq`, label: 'FAQ' },
+	{ href: `${base}/credits`, path: `${base}/credits`, label: 'Credits' }
+];
+---
+
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+	{
+		links.map(({ href, path, label }) => {
+			const isActive = currentPath === path;
+			return (
+				<li class="nav-item">
+					<a
+						class={`nav-link ${location === 'footer' ? 'p-0' : ''} ${isActive ? 'active' : ''}`}
+						aria-current={isActive ? 'page' : undefined}
+						href={href}>
+						{label}
+					</a>
+				</li>
+			);
+		})
+	}
+</ul>
+
+<style>
+	.navbar-nav .nav-link.active {
+		color: var(--primary);
+		text-decoration: underline;
+	}
+</style>

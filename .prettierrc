@@ -1,18 +1,16 @@
 {
-    "useTabs": true,
-    "singleQuote": true,
-    "trailingComma": "none",
-    "printWidth": 120,
-    "plugins": [
-        "prettier-plugin-svelte"
-    ],
-    "overrides": [
-        {
-            "files": "*.svelte",
-            "options": {
-                "parser": "svelte"
-            }
-        }
-    ],
-    "bracketSameLine": true
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"printWidth": 120,
+	"plugins": ["prettier-plugin-astro"],
+	"overrides": [
+		{
+			"files": "*.astro",
+			"options": {
+				"parser": "astro"
+			}
+		}
+	],
+	"bracketSameLine": true
 }

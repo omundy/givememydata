@@ -1,11 +1,10 @@
 /** @type { import("eslint").Linter.Config } */
 module.exports = {
 	root: true,
-	extends: ['eslint:recommended', 'plugin:svelte/recommended', 'prettier'],
+	extends: ['eslint:recommended', 'plugin:astro/recommended', 'prettier'],
 	parserOptions: {
 		sourceType: 'module',
-		ecmaVersion: 2020,
-		extraFileExtensions: ['.svelte']
+		ecmaVersion: 2020
 	},
 	env: {
 		browser: true,

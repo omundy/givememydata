@@ -1,0 +1,22 @@
+---
+import { base } from '../lib/base.js';
+---
+
+<a class="navbar-brand" href={`${base}/`}>
+	<img src={`${base}/assets/img/gmmd_icon_simple_200w.png`} alt="Give Me My Data logo" class="img-fluid" />
+	Give Me My Data
+</a>
+
+<style>
+	.navbar-brand {
+		font-family: var(--header-font-family);
+		font-size: 1.3rem;
+		color: var(--bs-body-color);
+	}
+	.navbar-brand img {
+		max-width: 30px;
+		width: 100%;
+		margin-right: 0.3rem;
+		vertical-align: -7px;
+	}
+</style>
