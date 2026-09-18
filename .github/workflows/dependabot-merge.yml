@@ -1,0 +1,64 @@
+# ==============================================================================
+# AUTOMATED DEPENDABOT PR APPROVAL & ASTRO BUILD VALIDATION
+# ==============================================================================
+# REQUIRED REPOSITORY SETUP BEFORE USE:
+# 1. Github > Repository > Settings > General
+# https://github.com/omundy/givememydata/settings
+# 2. Scroll to the "Pull Requests" section and check "Allow auto-merge".
+# NOTE: You do NOT need to set up any Repository Rulesets or Branch Protection 
+# rules for this file to work safely!
+#
+# HOW THE SAFETY NET WORKS:
+# 1. It checks out your code and installs the updated dependencies.
+# 2. It runs `npm run build` to see if your Astro site compiles without errors.
+# 3. IF THE BUILD PASSES: It automatically approves the PR and triggers a squash merge.
+# 4. IF THE BUILD FAILS: The script crashes, prevents the merge, and leaves 
+#    the PR open so you can see what broke without risking your main branch.
+# ==============================================================================
+
+name: Dependabot Auto-Merge
+# Best Practice: Keep your workflow on on: pull_request. By default, GitHub treats Dependabot pull_request events with a highly restricted, read-only token context to safeguard secrets against untrusted code execution. [1] (https://github.com/orgs/community/discussions/163952)
+on: pull_request
+
+permissions:
+  pull-requests: write
+  contents: write
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    # Strictly ensure this only runs for Dependabot to prevent unauthorized exploits
+    if: |
+      github.actor == 'dependabot[bot]' && 
+      github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Matches standard modern Astro project defaults
+          cache: 'npm'
+
+      # The gatekeeper step: Installs packages using the project lockfile
+      - name: Install dependencies
+        run: npm ci
+
+      # The ultimate validation step: Ensures Astro compiles smoothly 
+      - name: Run Astro Build Validation
+        run: npm run build
+
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      # If the 'Astro Build Validation' step crashes, this step will be skipped completely
+      - name: Approve and Enable Auto-Merge
+        run: |
+          gh pr review --approve "$PR_URL"
+          gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

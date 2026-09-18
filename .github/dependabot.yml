@@ -1,8 +1,33 @@
+# ==============================================================================
+# DEPENDABOT CONFIGURATION & AUTOMATION OVERVIEW
+# ==============================================================================
+# This file scans the npm ecosystem daily for outdated packages.
+#
+# HOW ROUTINE UPDATES ARE HANDLED (Minor & Patch):
+# To save CI build minutes and cut down on PR noise, all minor and patch updates 
+# are bundled together into a single daily "dependencies" PR. The automation 
+# workflow instantly approves and queues this PR. If tests pass, it merges itself.
+# You will never have to manually look at or touch a minor or patch update again.
+#
+# HOW MAJOR UPDATES ARE HANDLED (e.g., TypeScript 7):
+# Major version updates bypass the bundle and arrive as standalone PRs. The 
+# automation workflow will still instantly approve and queue them for auto-merge.
+# - IF TESTS PASS: It merges itself automatically with zero manual effort.
+# - IF TESTS FAIL: The auto-merge cancels, your branch rules block it, and 
+#   GitHub alerts you that a breaking change requires human attention.
+# ==============================================================================
+
 version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
-    allow:
-      - dependency-type: "production"
+      interval: "daily"
+    # Groups minor and patch updates into a single PR to minimize CI runs
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
