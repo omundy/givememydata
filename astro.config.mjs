@@ -6,7 +6,6 @@ const isDev = process.argv.includes('dev');
 
 export default defineConfig({
 	base: isDev ? '/' : '/givememydata',
-	outDir: 'build',
 	trailingSlash: 'ignore',
 	vite: {
 		css: {
