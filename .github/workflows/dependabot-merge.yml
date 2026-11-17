@@ -1,18 +1,15 @@
 # ==============================================================================
 # AUTOMATED DEPENDABOT PR APPROVAL & ASTRO BUILD VALIDATION
 # ==============================================================================
-# REQUIRED REPOSITORY SETUP BEFORE USE:
-# 1. Github > Repository > Settings > General
-# https://github.com/omundy/givememydata/settings
-# 2. Scroll to the "Pull Requests" section and check "Allow auto-merge".
-# NOTE: You do NOT need to set up any Repository Rulesets or Branch Protection 
-# rules for this file to work safely!
+# No repository setup required — this does a direct squash merge rather
+# than GitHub's "auto-merge" feature, so it doesn't need branch protection
+# rules on main (GitHub's auto-merge mutation refuses to attach without them).
 #
 # HOW THE SAFETY NET WORKS:
 # 1. It checks out your code and installs the updated dependencies.
 # 2. It runs `npm run build` to see if your Astro site compiles without errors.
-# 3. IF THE BUILD PASSES: It automatically approves the PR and triggers a squash merge.
-# 4. IF THE BUILD FAILS: The script crashes, prevents the merge, and leaves 
+# 3. IF THE BUILD PASSES: It approves the PR and squash-merges it immediately.
+# 4. IF THE BUILD FAILS: The script crashes, prevents the merge, and leaves
 #    the PR open so you can see what broke without risking your main branch.
 # ==============================================================================
 
@@ -37,7 +34,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Matches standard modern Astro project defaults
+          node-version: '22' # Astro requires Node >=22.12 (deploy.yml's withastro/action also defaults to 22)
           cache: 'npm'
 
       # The gatekeeper step: Installs packages using the project lockfile
@@ -54,11 +51,14 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      # If the 'Astro Build Validation' step crashes, this step will be skipped completely
-      - name: Approve and Enable Auto-Merge
+      # If the 'Astro Build Validation' step crashes, this step will be skipped completely.
+      # A direct merge (not --auto) because `--auto` requires branch protection
+      # rules on main to exist at all, which this repo doesn't have — the build
+      # already gates this step, so there's nothing else to wait on.
+      - name: Approve and Merge
         run: |
           gh pr review --approve "$PR_URL"
-          gh pr merge --auto --squash "$PR_URL"
+          gh pr merge --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
