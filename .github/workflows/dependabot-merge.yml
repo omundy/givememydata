@@ -29,10 +29,10 @@ jobs:
       github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '22' # Astro requires Node >=22.12 (deploy.yml's withastro/action also defaults to 22)
           cache: 'npm'

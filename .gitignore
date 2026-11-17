@@ -1,8 +1,6 @@
 node_modules
 
 # Output
-.output
-.vercel
 /.astro
 /dist
 
@@ -15,6 +13,3 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.test
-
-# Project
-old-website

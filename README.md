@@ -39,10 +39,7 @@ npm run preview
 
 ### Deployment
 
-```bash
-# deply to github
-npm run deploy
-```
+Pushing to `main` builds and deploys the site to GitHub Pages automatically (see `.github/workflows/deploy.yml`).
 
 
 </details>
